@@ -1,3 +1,6 @@
 [gd_scene format=3 uid="uid://bae0gj0h7e70m"]
 
-[node name="Player" type="Node"]
+[node name="Player" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
