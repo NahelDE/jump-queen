@@ -1,0 +1,69 @@
+[gd_scene load_steps=2 format=3 uid="uid://n1174bagh8id"]
+
+[sub_resource type="FontFile" id="FontFile_37p78"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1149.0
+offset_bottom = 648.0
+
+[node name="Labels" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 1022.0
+offset_top = 20.0
+offset_right = 1121.0
+offset_bottom = 73.0
+
+[node name="JumpLabel" type="Label" parent="Control/Labels"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Jumps : 0"
+
+[node name="TimeLabel" type="Label" parent="Control/Labels"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Timer : 00:00"
+
+[node name="StatsLeft" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 21.0
+offset_right = 211.0
+offset_bottom = 82.0
+
+[node name="JumpCharge" type="Label" parent="Control/StatsLeft"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_37p78")
+text = "Charge du Saut"
+
+[node name="JumpBar" type="ProgressBar" parent="Control/StatsLeft"]
+unique_name_in_owner = true
+layout_mode = 2
+step = 1.0
+
+[node name="StatsRight" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 90.0
+offset_right = 213.0
+offset_bottom = 164.0
+
+[node name="Stamina" type="Label" parent="Control/StatsRight"]
+layout_mode = 2
+text = "Fatigue"
+
+[node name="StaminaBar" type="ProgressBar" parent="Control/StatsRight"]
+unique_name_in_owner = true
+layout_mode = 2
+step = 1.0

@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://c38en7ec3ryj2"]
+[gd_scene load_steps=8 format=4 uid="uid://c38en7ec3ryj2"]
 
 [ext_resource type="Texture2D" uid="uid://b8o0fkvvjlcsb" path="res://assets/kenney_abstract-platformer/Tilesheet/tilesheet_complete.png" id="1_c7s6e"]
 [ext_resource type="Script" uid="uid://mm2olr2b5u0d" path="res://map.gd" id="1_wijl4"]
 [ext_resource type="PackedScene" uid="uid://bae0gj0h7e70m" path="res://player.tscn" id="3_e0an3"]
+[ext_resource type="PackedScene" uid="uid://n1174bagh8id" path="res://hud.tscn" id="4_p5pve"]
+[ext_resource type="Script" uid="uid://b1s4uksswcgl4" path="res://hud.gd" id="5_urblq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wijl4"]
 texture = ExtResource("1_c7s6e")
@@ -322,3 +324,6 @@ tile_set = SubResource("TileSet_e6lj2")
 position = Vector2(252, 545)
 
 [node name="Player" parent="." instance=ExtResource("3_e0an3")]
+
+[node name="HUD" parent="." groups=["interface"] instance=ExtResource("4_p5pve")]
+script = ExtResource("5_urblq")
