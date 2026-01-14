@@ -5,28 +5,42 @@ extends CharacterBody2D
 @export var vitesse_marche = 200.0
 
 func _physics_process(delta):
-	
+	# 1. Gravité et animation de saut (en l'air)
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		
-	# récup la direction
+		$AnimatedSprite2D.play("jump") # On utilise .play() c'est plus propre
+	
+	# 2. Récupérer la direction
 	var direction = Input.get_axis("ui_left", "ui_right")
 		
 	if is_on_floor():
-		
-		if not Input.is_action_pressed("ui_accept"):
+		# Gérer le Flip du sprite
+		if direction != 0:
+			$AnimatedSprite2D.flip_h = (direction < 0)
+
+		# LOGIQUE AU SOL
+		if Input.is_action_pressed("ui_accept"):
+			# ÉTAPE : CHARGE DU SAUT
+			velocity.x = 0
+			$AnimatedSprite2D.play("jump") # Ou une animation de charge si tu as
+			force_actuelle = min(force_actuelle + 500 * delta, force_max)
+			$AnimatedSprite2D.scale = Vector2(2.0,2.0)
+			
+		elif direction != 0:
+			# ÉTAPE : MARCHE
 			velocity.x = direction * vitesse_marche
+			$AnimatedSprite2D.play("move")
+			$AnimatedSprite2D.scale = Vector2(2.0,2.0)
 		else:
-			velocity.x = 0 # psq si on charge on s'arrête 
-			force_actuelle += 500 * delta
-			force_actuelle = min(force_actuelle, force_max)
-					
+			# ÉTAPE : REPOS
+			velocity.x = 0
+			$AnimatedSprite2D.play("static")
+			$AnimatedSprite2D.scale = Vector2(1.0,1.0)
+
+		# 3. RELÂCHER LE SAUT
 		if Input.is_action_just_released("ui_accept"):
 			velocity.y = -force_actuelle
-			velocity.x = direction * (force_actuelle * 0.5) # test impulsion 
+			velocity.x = direction * (force_actuelle * 0.5)
 			force_actuelle = 0
-			
-		if direction != 0:
-			$AnimatedSprite2D.flip_h = (direction < 0) #pour pas marcher à reculons
 
 	move_and_slide()
