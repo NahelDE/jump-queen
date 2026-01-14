@@ -319,6 +319,6 @@ tile_map_data = PackedByteArray("AAD//wgAAAAAAAMAAAD//wcAAAAAAAMAAAD//wYAAAAAAAM
 tile_set = SubResource("TileSet_e6lj2")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(201, 547)
+position = Vector2(252, 545)
 
 [node name="Player" parent="." instance=ExtResource("3_e0an3")]
